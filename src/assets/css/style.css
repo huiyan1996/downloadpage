@@ -1,0 +1,19 @@
+html, body {
+    /* background-color: #000; */
+}
+
+.bottomBg {
+    background-color: #343a90;
+    padding: 20px;
+    color: #fff;
+}
+
+.btn-primary {
+    background-color: #0972dd;
+}
+
+.badge-primary {
+    color: #fff;
+    background-color: #0972dd;
+    font-size: 15px;
+}
