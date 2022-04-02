@@ -6,7 +6,7 @@
       </div>
       <div class="bottomBg">
         <div class="text-center">
-          <button type="button" class="btn btn-primary">点击下载安装</button>
+          <button type="button" class="btn btn-primary">点击下载安装 {{systemType}}</button>
         </div>
         <div class="mt-4">
           <b-badge pill variant="primary">温馨提示</b-badge>
@@ -32,6 +32,35 @@ export default {
   name: 'Home',
   components: {
     HelloWorld
+  },
+  data: function() {
+    return {
+      systemType: null
+    }
+  },
+  mounted: function() {
+    this.systemType = this.getMobileOperatingSystem()
+  },
+  methods: {
+    getMobileOperatingSystem() {
+      var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+      // Windows Phone must come first because its UA also contains "Android"
+      if (/windows phone/i.test(userAgent)) {
+          return "Windows Phone";
+      }
+
+      if (/android/i.test(userAgent)) {
+          return "Android";
+      }
+
+      // iOS detection from: http://stackoverflow.com/a/9039885/177710
+      if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+          return "iOS";
+      }
+
+      return null;
+    }
   }
 }
 </script>
